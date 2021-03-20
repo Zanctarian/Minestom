@@ -11,14 +11,14 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Used to register {@link Instance}.
  */
 public final class InstanceManager {
 
-    private final Set<Instance> instances = new CopyOnWriteArraySet<>();
+    private final Set<Instance> instances = ConcurrentHashMap.newKeySet();
 
     /**
      * Registers an {@link Instance} internally.

@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -44,9 +44,9 @@ public class Sidebar implements Scoreboard {
      */
     private static final int MAX_LINES_COUNT = 15;
 
-    private final Set<Player> viewers = new CopyOnWriteArraySet<>();
+    private final Set<Player> viewers = ConcurrentHashMap.newKeySet();
 
-    private final Set<ScoreboardLine> lines = new CopyOnWriteArraySet<>();
+    private final Set<ScoreboardLine> lines = ConcurrentHashMap.newKeySet();
     private final IntLinkedOpenHashSet availableColors = new IntLinkedOpenHashSet();
 
     private final String objectiveName;

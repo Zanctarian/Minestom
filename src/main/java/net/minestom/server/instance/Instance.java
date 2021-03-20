@@ -81,11 +81,11 @@ public abstract class Instance implements BlockModifier, EventHandler, DataConta
     private final Map<String, Collection<EventCallback<?>>> extensionCallbacks = new ConcurrentHashMap<>();
 
     // Entities present in this instance
-    protected final Set<Entity> entities = new CopyOnWriteArraySet<>();
-    protected final Set<Player> players = new CopyOnWriteArraySet<>();
-    protected final Set<EntityCreature> creatures = new CopyOnWriteArraySet<>();
-    protected final Set<ObjectEntity> objectEntities = new CopyOnWriteArraySet<>();
-    protected final Set<ExperienceOrb> experienceOrbs = new CopyOnWriteArraySet<>();
+    protected final Set<Entity> entities = ConcurrentHashMap.newKeySet();
+    protected final Set<Player> players = ConcurrentHashMap.newKeySet();
+    protected final Set<EntityCreature> creatures = ConcurrentHashMap.newKeySet();
+    protected final Set<ObjectEntity> objectEntities = ConcurrentHashMap.newKeySet();
+    protected final Set<ExperienceOrb> experienceOrbs = ConcurrentHashMap.newKeySet();
     // Entities per chunk
     protected final Long2ObjectMap<Set<Entity>> chunkEntities = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap<>());
     private Object entitiesLock = new Object(); // Lock used to prevent the entities Set and Map to be subject to race condition

@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Represents the {@link Player} tab list as a {@link Scoreboard}.
@@ -19,7 +19,7 @@ public class TabList implements Scoreboard {
      */
     private static final String TAB_LIST_PREFIX = "tl-";
 
-    private final Set<Player> viewers = new CopyOnWriteArraySet<>();
+    private final Set<Player> viewers = ConcurrentHashMap.newKeySet();
     private final Set<Player> unmodifiableViewers = Collections.unmodifiableSet(viewers);
     private final String objectiveName;
 

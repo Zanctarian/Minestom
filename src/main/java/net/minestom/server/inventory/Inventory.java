@@ -57,7 +57,7 @@ public class Inventory implements InventoryModifier, InventoryClickHandler, View
     // the items in this inventory
     private final ItemStack[] itemStacks;
     // the players currently viewing this inventory
-    private final Set<Player> viewers = new CopyOnWriteArraySet<>();
+    private final Set<Player> viewers = ConcurrentHashMap.newKeySet();
     private final Set<Player> unmodifiableViewers = Collections.unmodifiableSet(viewers);
     // (player -> cursor item) map, used by the click listeners
     private final ConcurrentHashMap<Player, ItemStack> cursorPlayersItem = new ConcurrentHashMap<>();

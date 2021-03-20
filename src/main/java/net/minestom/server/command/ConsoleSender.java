@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Represents the console when sending a command to the server.
@@ -15,7 +15,7 @@ public class ConsoleSender implements CommandSender {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ConsoleSender.class);
 
-    private final Set<Permission> permissions = new CopyOnWriteArraySet<>();
+    private final Set<Permission> permissions = ConcurrentHashMap.newKeySet();
 
     @Override
     public void sendMessage(@NotNull String message) {

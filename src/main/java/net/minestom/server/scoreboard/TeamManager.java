@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * An object which manages all the {@link Team}'s
@@ -31,7 +31,7 @@ public final class TeamManager {
      * Default constructor
      */
     public TeamManager() {
-        this.teams = new CopyOnWriteArraySet<>();
+        this.teams = ConcurrentHashMap.newKeySet();
     }
 
     /**

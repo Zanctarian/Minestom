@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Represents a scoreboard which rendered a tag below the name.
@@ -19,7 +19,7 @@ public class BelowNameTag implements Scoreboard {
      */
     public static final String BELOW_NAME_TAG_PREFIX = "bnt-";
 
-    private final Set<Player> viewers = new CopyOnWriteArraySet<>();
+    private final Set<Player> viewers = ConcurrentHashMap.newKeySet();
     private final Set<Player> unmodifiableViewers = Collections.unmodifiableSet(viewers);
     private final String objectiveName;
 

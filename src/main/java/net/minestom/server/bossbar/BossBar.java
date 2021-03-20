@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Represents a boss bar which is displayed on the top of the client screen (max amount of boss bar defined by {@link #MAX_BOSSBAR}).
@@ -26,7 +26,7 @@ public class BossBar implements Viewable {
     private static final Map<UUID, Set<BossBar>> PLAYER_BOSSBAR_MAP = new HashMap<>();
 
     private final UUID uuid = UUID.randomUUID();
-    private final Set<Player> viewers = new CopyOnWriteArraySet<>();
+    private final Set<Player> viewers = ConcurrentHashMap.newKeySet();
     private final Set<Player> unmodifiableViewers = Collections.unmodifiableSet(viewers);
 
     private JsonMessage title;

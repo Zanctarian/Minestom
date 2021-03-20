@@ -387,8 +387,8 @@ public class DynamicChunk extends Chunk {
         fullDataPacket.biomes = biomes;
         fullDataPacket.chunkX = chunkX;
         fullDataPacket.chunkZ = chunkZ;
-        fullDataPacket.paletteStorage = blockPalette.clone();
-        fullDataPacket.customBlockPaletteStorage = customBlockPalette.clone();
+        fullDataPacket.paletteStorage = blockPalette;
+        fullDataPacket.customBlockPaletteStorage = customBlockPalette;
         fullDataPacket.blockEntities = new IntOpenHashSet(blockEntities);
         fullDataPacket.blocksData = new Int2ObjectOpenHashMap<>(blocksData);
         return fullDataPacket;

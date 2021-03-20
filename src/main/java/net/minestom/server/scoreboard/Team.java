@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * This object represents a team on a scoreboard that has a common display theme and other properties.
@@ -82,7 +82,7 @@ public class Team {
         this.prefix = ColoredText.of("");
         this.suffix = ColoredText.of("");
 
-        this.members = new CopyOnWriteArraySet<>();
+        this.members = ConcurrentHashMap.newKeySet();
     }
 
     /**

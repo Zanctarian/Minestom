@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
 
 /**
@@ -20,7 +20,7 @@ public class SingleThreadProvider extends ThreadProvider {
         setThreadCount(1);
     }
 
-    private final Set<Instance> instances = new CopyOnWriteArraySet<>();
+    private final Set<Instance> instances = ConcurrentHashMap.newKeySet();
 
     @Override
     public void onInstanceCreate(@NotNull Instance instance) {

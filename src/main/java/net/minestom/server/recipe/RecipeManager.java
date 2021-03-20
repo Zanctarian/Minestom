@@ -6,11 +6,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class RecipeManager {
     private final DeclareRecipesPacket declareRecipesPacket = new DeclareRecipesPacket();
-    private final Set<Recipe> recipes = new CopyOnWriteArraySet<>();
+    private final Set<Recipe> recipes = ConcurrentHashMap.newKeySet();
 
     public void addRecipe(@NotNull Recipe recipe) {
         if (this.recipes.add(recipe)) {

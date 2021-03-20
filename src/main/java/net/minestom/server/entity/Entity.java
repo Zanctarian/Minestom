@@ -84,7 +84,7 @@ public class Entity implements Viewable, EventHandler, DataContainer, Permission
     protected final Set<Player> viewers = ConcurrentHashMap.newKeySet();
     private final Set<Player> unmodifiableViewers = Collections.unmodifiableSet(viewers);
     private Data data;
-    private final Set<Permission> permissions = new CopyOnWriteArraySet<>();
+    private final Set<Permission> permissions = ConcurrentHashMap.newKeySet();
 
     protected UUID uuid;
     private boolean isActive; // False if entity has only been instanced without being added somewhere
@@ -92,7 +92,7 @@ public class Entity implements Viewable, EventHandler, DataContainer, Permission
     private boolean shouldRemove;
     private long scheduledRemoveTime;
 
-    private final Set<Entity> passengers = new CopyOnWriteArraySet<>();
+    private final Set<Entity> passengers = ConcurrentHashMap.newKeySet();
     protected EntityType entityType; // UNSAFE to change, modify at your own risk
 
     // Network synchronization, send the absolute position of the entity each X milliseconds

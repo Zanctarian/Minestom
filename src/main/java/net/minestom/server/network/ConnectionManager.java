@@ -31,7 +31,6 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.function.Consumer;
 
 /**
@@ -44,7 +43,7 @@ public final class ConnectionManager {
     private static final ColoredText TIMEOUT_TEXT = ColoredText.of(ChatColor.RED + "Timeout");
 
     private final Queue<Player> waitingPlayers = new ConcurrentLinkedQueue<>();
-    private final Set<Player> players = new CopyOnWriteArraySet<>();
+    private final Set<Player> players = ConcurrentHashMap.newKeySet();
     private final Map<PlayerConnection, Player> connectionPlayerMap = new ConcurrentHashMap<>();
 
     // All the consumers to call once a packet is received
